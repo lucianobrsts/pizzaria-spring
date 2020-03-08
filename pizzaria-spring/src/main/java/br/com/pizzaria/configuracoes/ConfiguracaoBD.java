@@ -40,8 +40,8 @@ public class ConfiguracaoBD {
 		entityManagerFactoryBean.setJpaDialect(new HibernateJpaDialect());
 
 		Properties jpaProperties = new Properties();
-		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
-		jpaProperties.put("hibernate.hbm2dd1.auto", "create");
+		jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+		jpaProperties.put("hibernate.hbm2ddl.auto", "create");
 		entityManagerFactoryBean.setJpaProperties(jpaProperties);
 		return entityManagerFactoryBean;
 	}
