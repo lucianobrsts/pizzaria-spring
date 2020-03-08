@@ -32,7 +32,7 @@ public class ConfiguracaoBD {
 	}
 
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() throws Exception {
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws Exception {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
 		entityManagerFactoryBean.setPackagesToScan("br.com.pizzaria.modelo.entidades");
@@ -49,7 +49,7 @@ public class ConfiguracaoBD {
 	@Bean
 	public JpaTransactionManager transactionManager() throws Exception {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
-		transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
+		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
 	}
 
