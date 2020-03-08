@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class PizzaController {
 
 	public PizzaController() {
-		System.out.println("Criou a pizza controller...");
+
 	}
 
 	@RequestMapping("/ola/{nome}")

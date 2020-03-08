@@ -28,7 +28,7 @@ public class ConfiguracaoBD {
 		dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/pizzaria");
 		dataSource.setUser("root");
 		dataSource.setPassword("123456");
-		return dataSource();
+		return dataSource;
 	}
 
 	@Bean
