@@ -11,7 +11,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="style.css" />
-	<title>Listagem de Ingredientes</title>
+	<title>${titulo}</title>
 </h:head>
 <h:body>
 	<div style="width: 700px;">
@@ -28,6 +28,10 @@
 				style="text-align: center; width:6%;">
 
 			</p:column>
+
+			<f:facet name="footer">
+					Ingredientes Cadastrados: ${ingredientes.size()}
+				</f:facet>
 		</p:dataTable>
 	</div>
 </h:body>
