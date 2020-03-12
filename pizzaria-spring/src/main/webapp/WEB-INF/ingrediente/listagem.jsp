@@ -30,15 +30,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				<c:forEach items="${ingredientes}" var="ingrediente">
+					<tr>
+						<td>${ingrediente.id}</td>
+						<td>${ingrediente.nome}</td>
+						<td>${ingrediente.categoria}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="3">Ingredientes Cadastrados: ${ingredientes.size()}</td>
+					<td colspan="3">Ingredientes Cadastrados:
+						${ingredientes.size()}</td>
 				</tr>
 			</tfoot>
 		</table>
