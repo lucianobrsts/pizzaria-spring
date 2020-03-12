@@ -47,9 +47,18 @@
 					<td colspan="3">Ingredientes Cadastrados:
 						${ingredientes.size()}</td>
 				</tr>
+				<tr>
+					<td colspan="3">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#modal-ingrediente">Cadastrar Ingrediente</button>
+					</td>
+				</tr>
 			</tfoot>
 		</table>
 	</section>
+	
+	<jsp:include page="modalIngrediente.jsp"/>
+	
 	<div class="container">
 		<c:if test="${not empty mensagemErro}">
 			<div>
@@ -68,10 +77,8 @@
 
 	</div>
 
-	<script type="text/javascript"
-		src="${path}/static/js/jquery-2.1.3.min.js"></script>
-	<script type="text/javascript"
-		src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${path}/static/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="${path}/static/js/ingredientes.js"></script>
 </body>
 </html>

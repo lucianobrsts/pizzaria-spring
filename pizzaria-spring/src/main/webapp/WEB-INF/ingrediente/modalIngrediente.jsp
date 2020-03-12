@@ -11,11 +11,12 @@
 		<div class="modal-content">
 			<form id="form-ingrediente" method="post">
 				<div class="modal-header">
+					<h4 class="modal-title">Informações do Ingrediente</h4>
+					
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Informações do Ingrediente</h4>
 				</div>
 				<div class="modal-body">
 					<label for="nome">Nome: </label> <input id="nome" name="nome"
