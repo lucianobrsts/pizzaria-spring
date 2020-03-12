@@ -17,7 +17,7 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
 		viewResolver.setPrefix("/WEB-INF/");
-		viewResolver.setSuffix(".xhtml");
+		viewResolver.setSuffix(".jsp");
 		viewResolver.setViewClass(JstlView.class);
 		registry.viewResolver(viewResolver);
 	}
