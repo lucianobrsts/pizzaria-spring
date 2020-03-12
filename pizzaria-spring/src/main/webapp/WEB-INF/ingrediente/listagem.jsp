@@ -10,18 +10,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${titulo}</title>
+
 <c:set var="path" value="${pageContext.request.contextPath}"
 	scope="request" />
+
 <style type="text/css">
 @IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
 
 @IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
 </style>
+
 </head>
 <body>
 
-	<section>
-		<table>
+	<section class="container">
+		<table
+			class="table table-hover table-condensed table-striped table-bordered">
 			<thead>
 				<tr>
 					<td>#</td>
