@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.pizzaria.modelo.entidades.Ingrediente;
+import br.com.pizzaria.modelo.enums.CategoriasIngredientes;
 import br.com.pizzaria.modelo.repositorios.IngredienteRepositorio;
 
 @Controller
@@ -28,6 +29,7 @@ public class IngredienteController {
 
 		model.addAttribute("titulo", "Listagem de Ingredientes");
 		model.addAttribute("ingredientes", ingredientes);
+		model.addAttribute("categorias", CategoriasIngredientes.values());
 
 		return "ingrediente/listagem";
 	}
@@ -38,9 +40,11 @@ public class IngredienteController {
 
 		if (bindingResult.hasErrors()) {
 			FieldError error = bindingResult.getFieldErrors().get(0);
-			redirectAttributes.addFlashAttribute("mensagemErro", "Não foi possível salvar o ingrediente. " + error.getField() + " " + error.getDefaultMessage());
+			redirectAttributes.addFlashAttribute("mensagemErro",
+					"Não foi possível salvar o ingrediente. " + error.getField() + " " + error.getDefaultMessage());
 		} else {
 			ingredienteRepositorio.save(ingrediente);
+			redirectAttributes.addFlashAttribute("mensagemInfo", "O Ingrediente foi salvo com sucesso.");
 		}
 
 		return "redirect:/app/ingredientes";
