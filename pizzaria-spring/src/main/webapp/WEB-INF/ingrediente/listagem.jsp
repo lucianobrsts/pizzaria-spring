@@ -35,37 +35,7 @@
 			</div>
 		</c:if>
 		<section class="container">
-			<table
-				class="table table-hover table-condensed table-striped table-bordered">
-				<thead>
-					<tr>
-						<td>#</td>
-						<td>Nome</td>
-						<td>Categoria</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${ingredientes}" var="ingrediente">
-						<tr>
-							<td>${ingrediente.id}</td>
-							<td>${ingrediente.nome}</td>
-							<td>${ingrediente.categoria}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="3">Ingredientes Cadastrados:
-							${ingredientes.size()}</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<button type="button" class="btn btn-primary" data-toggle="modal"
-								data-target="#modal-ingrediente">Cadastrar Ingrediente</button>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
+			<jsp:include page="tabela-ingredientes.jsp" />
 		</section>
 
 		<jsp:include page="modalIngrediente.jsp" />
