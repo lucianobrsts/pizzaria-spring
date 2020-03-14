@@ -31,7 +31,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button id="btn-salvar" type="button" class="btn btn-primary">Salvar</button>
+					<button id="btn-salvar" type="button" class="btn btn-primary">SalvarInformações</button>
 				</div>
 			</form>
 		</div>

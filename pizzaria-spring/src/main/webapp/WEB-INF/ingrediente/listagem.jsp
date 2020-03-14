@@ -10,19 +10,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${titulo}</title>
-
 <c:set var="path" value="${pageContext.request.contextPath}"
 	scope="request" />
-
 <style type="text/css">
 @IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
 
 @IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
 </style>
-
 </head>
 <body>
 	<div class="container">
+		
 		<c:if test="${not empty mensagemErro}">
 			<div>
 				<div class="alert alert-danger">${mensagemErro}</div>
@@ -34,13 +32,12 @@
 				<div class="alert alert-info">${mensagemInfo}</div>
 			</div>
 		</c:if>
-		<section class="container">
-			<jsp:include page="tabela-ingredientes.jsp" >
+
+		<section id="secao-ingredientes">
+			<jsp:include page="tabela-ingredientes.jsp" />
 		</section>
 
-		<jsp:include page="modalIngrediente.jsp" />
-
-		<section id="secao-ingredientes"></section>
+		<jsp:include page="modal-ingrediente.jsp" />
 	</div>
 
 	<script type="text/javascript" src="${path}/static/js/jquery-3.4.1.min.js"></script>

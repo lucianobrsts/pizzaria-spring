@@ -31,7 +31,7 @@
 		<tr>
 			<td colspan="3">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#modal-ingrediente">Cadastrar Ingrediente</button>
+					data-target="#modal-ingrediente">Cadastrar Ingredientes</button>
 			</td>
 		</tr>
 	</tfoot>
