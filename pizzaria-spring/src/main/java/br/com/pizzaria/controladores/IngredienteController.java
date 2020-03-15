@@ -9,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.pizzaria.excecoes.IngredienteInvalidoException;
 import br.com.pizzaria.modelo.entidades.Ingrediente;
@@ -36,7 +35,7 @@ public class IngredienteController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvarIngrediente(@Valid @ModelAttribute Ingrediente ingrediente, BindingResult bindingResult,
-			RedirectAttributes redirectAttributes) {
+			Model model) {
 
 		if (bindingResult.hasErrors()) {
 			throw new IngredienteInvalidoException();
@@ -44,7 +43,9 @@ public class IngredienteController {
 			ingredienteRepositorio.save(ingrediente);
 		}
 
-		return "redirect:/app/ingredientes";
+		model.addAttribute("ingredientes", ingredienteRepositorio.findAll());
+		model.addAttribute("Categorias", CategoriasIngredientes.values());
+		return "ingrediente/tabela-ingredientes";
 	}
 
 }

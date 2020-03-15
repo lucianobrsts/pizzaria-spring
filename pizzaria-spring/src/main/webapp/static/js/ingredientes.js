@@ -4,11 +4,14 @@ $(document).ready(function() {
 		var url = 'ingredientes';
 		var dadosIngrediente = $('#form-ingrediente').serialize();
 
-		$.post(url, dadosIngrediente).done(function() {
-			alert('Ingrediente salvo com sucesso!');
+		$.post(url, dadosIngrediente).done(function(pagina) {
+			$('#secao-ingredientes').html(pagina)
 
 		}).fail(function() {
-			alert('Erro ao Salvar um ingrediente!')
+			alert('Erro ao salvar!');
+
+		}).always(function() {
+			$('#modal-ingrediente').modal('hide');
 		});
 	});
 
