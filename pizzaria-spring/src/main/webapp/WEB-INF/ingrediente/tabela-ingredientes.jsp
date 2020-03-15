@@ -13,23 +13,25 @@
 			<td>#</td>
 			<td>Nome</td>
 			<td>Categoria</td>
+			<td>Deletar</td>
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach items="${ingredientes}" var="ingrediente">
-			<tr>
+			<tr data-id="${ingediente.id}">
 				<td>${ingrediente.id}</td>
 				<td>${ingrediente.nome}</td>
 				<td>${ingrediente.categoria}</td>
+				<td><button class="btn btn-danger btn-deletar">Deletar</button></td>
 			</tr>
 		</c:forEach>
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="3">Ingredientes Cadastrados: ${ingredientes.size()}</td>
+			<td colspan="4">Ingredientes Cadastrados: ${ingredientes.size()}</td>
 		</tr>
 		<tr>
-			<td colspan="3">
+			<td colspan="4">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
 					data-target="#modal-ingrediente">Cadastrar Ingredientes</button>
 			</td>
