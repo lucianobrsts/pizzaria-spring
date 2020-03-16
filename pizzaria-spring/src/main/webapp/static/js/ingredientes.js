@@ -1,20 +1,5 @@
 $(document).ready(function() {
 
-	$('#btn-salvar').on('click', function() {
-		var url = 'ingredientes';
-		var dadosIngrediente = $('#form-ingrediente').serialize();
-
-		$.post(url, dadosIngrediente).done(function(pagina) {
-			$('#secao-ingredientes').html(pagina)
-
-		}).fail(function() {
-			alert('Erro ao salvar!');
-
-		}).always(function() {
-			$('#modal-ingrediente').modal('hide');
-		});
-	});
-
 	aplicarListeners();
 
 });
@@ -23,7 +8,7 @@ var aplicarListeners = function() {
 	$('.btn-deletar').on('click', function() {
 		var id = $(this).parents('tr').data('id');
 
-		$ajax({
+		$.ajax({
 			url : "ingredientes/" + id,
 			type : 'DELETE',
 			success : function(result) {

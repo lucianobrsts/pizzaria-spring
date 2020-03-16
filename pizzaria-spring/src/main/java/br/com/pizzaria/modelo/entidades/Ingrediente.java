@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import br.com.pizzaria.modelo.enums.CategoriasIngredientes;
+import br.com.pizzaria.modelo.enums.CategoriaIngredientes;
 
 @Entity
 public class Ingrediente {
@@ -25,7 +25,7 @@ public class Ingrediente {
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private CategoriasIngredientes categoria;
+	private CategoriaIngredientes categoria;
 
 	public Long getId() {
 		return id;
@@ -43,11 +43,11 @@ public class Ingrediente {
 		this.nome = nome;
 	}
 
-	public CategoriasIngredientes getCategoria() {
+	public CategoriaIngredientes getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(CategoriasIngredientes categoria) {
+	public void setCategoria(CategoriaIngredientes categoria) {
 		this.categoria = categoria;
 	}
 

@@ -22,7 +22,7 @@
 				<td>${ingrediente.id}</td>
 				<td>${ingrediente.nome}</td>
 				<td>${ingrediente.categoria}</td>
-				<td><button class="btn btn-danger btn-deletar">Deletar</button></td>
+				<td><button type="button" class="btn btn-danger btn-deletar">Deletar</button></td>
 			</tr>
 		</c:forEach>
 	</tbody>
