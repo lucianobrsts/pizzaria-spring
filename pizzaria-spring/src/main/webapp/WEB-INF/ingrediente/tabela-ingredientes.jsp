@@ -17,6 +17,7 @@
 		</tr>
 	</thead>
 	<tbody>
+	
 		<c:forEach items="${ingredientes}" var="ingrediente">
 			<tr data-id="${ingediente.id}">
 				<td>${ingrediente.id}</td>
@@ -25,6 +26,7 @@
 				<td><button type="button" class="btn btn-danger btn-deletar">Deletar</button></td>
 			</tr>
 		</c:forEach>
+		
 	</tbody>
 	<tfoot>
 		<tr>
