@@ -6,6 +6,7 @@ $(document).ready(function() {
 
 var aplicarListeners = function() {
 	$('.btn-deletar').on('click', function() {
+		
 		var id = $(this).parents('tr').data('id');
 
 		$.ajax({
