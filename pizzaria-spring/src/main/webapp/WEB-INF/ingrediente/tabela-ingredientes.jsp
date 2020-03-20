@@ -10,22 +10,22 @@
 	class="table table-hover table-condensed table-striped table-bordered">
 	<thead>
 		<tr>
-			<td style="width: 10%">#</td>
-			<td style="width: 50%">Nome</td>
-			<td style="width: 20%">Categoria</td>
-			<td style="width: 10%">Editar</td>
-			<td style="width: 10%">Deletar</td>
+			<th style="width: 10%; text-align: center">#</th>
+			<th style="width: 45%; text-align: center">Nome</th>
+			<th style="width: 30%; text-align: center">Categoria</th>
+			<th style="width: 8%; text-align: center">Editar</th>
+			<th style="width: 8%; text-align: center">Deletar</th>
 		</tr>
 	</thead>
 	<tbody>
 
 		<c:forEach items="${ingredientes}" var="ingrediente">
 			<tr data-id="${ingediente.id}">
-				<td>${ingrediente.id}</td>
+				<td style="text-align: center;">${ingrediente.id}</td>
 				<td>${ingrediente.nome}</td>
-				<td>${ingrediente.categoria}</td>
-				<td><button type="button" class="btn btn-warning btn-editar">Editar</button></td>
-				<td><button type="button" class="btn btn-danger btn-deletar">Deletar</button></td>
+				<td style="text-align: center;">${ingrediente.categoria}</td>
+				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar">Editar</button></td>
+				<td style="text-align: center;"><button type="button" class="btn btn-danger btn-deletar">Deletar</button></td>
 			</tr>
 		</c:forEach>
 
