@@ -19,14 +19,14 @@
 				</div>
 
 				<div class="modal-body">
-					<label for="nome">Nome: </label> <input id="nome" name="nome"
-						class="form-control"> <label for="categoria">Categoria:
-					</label> <select id="categoria" name="categoria" class="form-control">
+					<label for="nome">Nome: </label> <input id="nome" name="nome" class="form-control"> 
+						
+						<label for="categoria">Categoria:</label> <select id="categoria" name="categoria" class="form-control">
 						<c:forEach items="${categorias}" var="categoria">
 							<option value="${categoria}">${categoria}</option>
 						</c:forEach>
-					</select> <input id="id" name="id" type="hidden"> <input id="csrf"
-						name="_csrf" type="hidden" value="${_csrf.token}">
+						
+					</select> <input id="id" name="id" type="hidden"> <input id="csrf" name="_csrf" type="hidden" value="${_csrf.token}">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

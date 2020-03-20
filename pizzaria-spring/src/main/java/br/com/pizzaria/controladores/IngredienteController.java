@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.pizzaria.excecoes.IngredienteInvalidoException;
 import br.com.pizzaria.modelo.entidades.Ingrediente;
@@ -60,6 +61,13 @@ public class IngredienteController {
 		} catch (Exception ex) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	@ResponseBody
+	public Ingrediente buscarIngrediente(@PathVariable Long id) {
+		Ingrediente ingrediente = ingredienteRepositorio.findOne(id);
+		return ingrediente;
 	}
 
 }
