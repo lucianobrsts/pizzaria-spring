@@ -6,14 +6,15 @@ $(document).ready(function() {
 
 var aplicarListeners = function() {
 	$('.btn-deletar').on('click', function() {
-		
 		var id = $(this).parents('tr').data('id');
+		var ingredientes = $('#quantidade-ingredientes').text();
 
 		$.ajax({
 			url : "ingredientes/" + id,
 			type : 'DELETE',
 			success : function(result) {
 				$('tr[data-id="' + id + '"]').remove();
+				$('#quantidade-ingredientes').text(ingredientes - 1);
 			}
 		});
 	});

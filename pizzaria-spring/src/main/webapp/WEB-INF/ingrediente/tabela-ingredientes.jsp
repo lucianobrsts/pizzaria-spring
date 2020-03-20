@@ -20,7 +20,7 @@
 	<tbody>
 
 		<c:forEach items="${ingredientes}" var="ingrediente">
-			<tr data-id="${ingediente.id}">
+			<tr data-id="${ingrediente.id}">
 				<td style="text-align: center;">${ingrediente.id}</td>
 				<td>${ingrediente.nome}</td>
 				<td style="text-align: center;">${ingrediente.categoria}</td>
@@ -32,7 +32,7 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="5">Ingredientes Cadastrados: ${ingredientes.size()}</td>
+			<td colspan="5">Ingredientes Cadastrados: <span id="quantidade-ingredientes"> ${ingredientes.size()} </span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
