@@ -37,6 +37,7 @@
 			<jsp:include page="tabela-pizzas.jsp" />
 		</section>
 
+		<jsp:include page="modal-pizza.jsp" />
 	</div>
 
 	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>

@@ -41,7 +41,7 @@
 		<tr>
 			<td colspan="7">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#modal-ingrediente">Cadastrar Pizzas</button>
+					data-target="#modal-pizza">Cadastrar Pizzas</button>
 			</td>
 		</tr>
 	</tfoot>
