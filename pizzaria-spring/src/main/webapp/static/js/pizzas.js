@@ -1,15 +1,14 @@
 $(document).ready(function() {
 
-	aplicarListeners();
+	aplicarListener();
 
 });
 
-var aplicarListeners = function() {
-
+var aplicarListener = function() {
 	$('#btn-salvar').on('click', function() {
 		var url = 'pizzas';
 		var dadosIngrediente = $('#form-pizza').serialize();
-
+		
 		$.post(url, dadosIngrediente).done(function(pagina) {
 			$('#secao-pizzas').html(pagina)
 			aplicarListeners();

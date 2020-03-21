@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +33,7 @@ public class Pizza {
 	@Enumerated(EnumType.STRING)
 	private CategoriaPizza categoria;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	private Set<Ingrediente> ingredientes;
 
 	public Long getId() {

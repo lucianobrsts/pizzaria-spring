@@ -43,7 +43,7 @@ public class PizzaController {
 		
 		model.addAttribute("pizzas", pizzaRepositorio.findAll());
 		model.addAttribute("categorias", CategoriaPizza.values());
-		return "Pizza/tabela-pizzas";
+		return "pizza/tabela-pizzas";
 	}
 
 	@RequestMapping("/quantas")
