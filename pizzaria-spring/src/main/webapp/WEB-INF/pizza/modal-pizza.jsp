@@ -9,7 +9,7 @@
 	role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
-			<form id="form-ingrediente" method="post">
+			<form id="form-pizza" method="post">
 				<div class="modal-header">
 					<h4 class="modal-title">Informações da Pizza</h4>
 					<button type="button" class="close" data-dismiss="modal"
@@ -28,18 +28,15 @@
 						<c:forEach items="${categorias}" var="categoria">
 							<option value="${categoria}">${categoria}</option>
 						</c:forEach>
-					</select> <input id="id" name="id" type="hidden"> <input id="csrf" name="_csrf" type="hidden" value="${_csrf.token}">
+					</select> 
 					
-					<label for="ingredientes">Ingrediente:</label> 
-					<select id="ingredientes" name="ingredientes" class="form-control">
-						<c:forEach items="${ingredientes}" var="ingredientes">
-							<option value="${ingredientes}">${ingredientes}</option>
-						</c:forEach>
-						</select>
+					<input id="id" name="id" type="hidden"> 
+					<input id="csrf" name="_csrf" type="hidden" value="${_csrf.token}">
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button id="btn-salvar" type="button" class="btn btn-primary">SalvarInformações</button>
+					<button id="btn-salvar" type="button" class="btn btn-primary">Salvar Informações</button>
 				</div>
 			</form>
 		</div>
