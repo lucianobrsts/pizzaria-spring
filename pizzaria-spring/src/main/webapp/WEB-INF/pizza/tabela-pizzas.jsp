@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
+<fmt:setLocale value="pt_BR" />
 <table
 	class="table table-hover table-condensed table-striped table-bordered">
 	<thead>
@@ -25,7 +26,9 @@
 			<tr data-id="${pizza.id}">
 				<td style="text-align: center;">${pizza.id}</td>
 				<td>${pizza.nome}</td>
-				<td style="text-align: center;">${pizza.preco}</td>
+				<td style="text-align: center;">
+					<fmt:formatNumber value="${pizza.preco}" type="currency" />
+				</td>
 				<td style="text-align: center;">${pizza.categoria}</td>
 				<td style="text-align: center;">${pizza.ingredientes}</td>
 				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar">Editar</button></td>
