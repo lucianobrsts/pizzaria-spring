@@ -3,12 +3,15 @@ package br.com.pizzaria.controladores;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,6 +57,17 @@ public class PizzaController {
 
 		model.addAttribute("pizzas", pizzaRepositorio.findAll());
 		return "pizza/tabela-pizzas";
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{pizzaId}")
+	public ResponseEntity<String> deletarPizza(@PathVariable Long pizzaId) {
+		try {
+			pizzaRepositorio.delete(pizzaId);
+			return new ResponseEntity<String>(HttpStatus.OK);
+
+		} catch (Exception e) {
+			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	@RequestMapping("/quantas")
