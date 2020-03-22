@@ -31,6 +31,13 @@
 						</c:forEach>
 					</select>
 					
+					<label for="ingredientes">Ingredientes: </label>
+					<select id="ingredientes" name="ingredientes" class="form-control" multiple="multiple">
+						<c:forEach items="${ingredientes}" var="ingrediente">
+							<option value="${ingrediente.id}">${ingrediente.nome}</option>
+						</c:forEach>
+					</select>
+					
 					<input id="id" name="id" type="hidden">
 				</div>
 				

@@ -25,12 +25,21 @@
 		<c:forEach items="${pizzas}" var="pizza">
 			<tr data-id="${pizza.id}">
 				<td style="text-align: center;">${pizza.id}</td>
+				
 				<td>${pizza.nome}</td>
+				
 				<td style="text-align: center;">
 					<fmt:formatNumber value="${pizza.preco}" type="currency" />
 				</td>
+				
 				<td style="text-align: center;">${pizza.categoria}</td>
-				<td style="text-align: center;">${pizza.ingredientes}</td>
+				
+				<td style="text-align: center;">
+				<c:forEach items="${pizza.ingredientes}" var="ingrediente">
+					${ingrediente.nome} <br />
+				</c:forEach>
+				</td>
+				
 				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar">Editar</button></td>
 				<td style="text-align: center;"><button type="button" class="btn btn-danger btn-deletar">Deletar</button></td>
 			</tr>
