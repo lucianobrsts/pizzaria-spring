@@ -1,17 +1,26 @@
 $(document).ready(function() {
 
 	aplicarListener();
+	aplicarListenerBtnSalvar();
 
 });
 
-var aplicarListener = function() {
+var limparModal = function() {
+	$('#id').val('');
+	$('#nome').val('');
+	$('#preco').val('');
+	$('#categoria').val('');
+	$('ingredientes option').attr('selected', false);
+};
+
+var aplicarListenerBtnSalvar = function() {
 	$('#btn-salvar').on('click', function() {
 		var url = 'pizzas';
 		var dadosIngrediente = $('#form-pizza').serialize();
 
 		$.post(url, dadosIngrediente).done(function(pagina) {
 			$('#secao-pizzas').html(pagina)
-			aplicarListeners();
+			aplicarListener();
 
 		}).fail(function() {
 			alert('Erro ao salvar!');
@@ -20,6 +29,10 @@ var aplicarListener = function() {
 			$('#modal-pizza').modal('hide');
 		});
 	});
+}
+
+var aplicarListener = function() {
+	$('#modal-pizza').on('hide.bs.modal', limparModal);
 
 	$('.btn-deletar').on('click', function() {
 		var pizzaId = $(this).parents('tr').data('id');
@@ -34,19 +47,25 @@ var aplicarListener = function() {
 			}
 		});
 	});
-	
-	$('.btn-editar').on('click', function() {
+
+	$('.btn-editar').on('click', function(){
 		var pizzaId = $(this).parents('tr').data('id');
-		var url = 'pizzas/' + pizzaId;
+		var url = 'pizzas/'+pizzaId;
 		
-		$.get(url).success(function(pizza) {
-			$('#id').val(pizza.id);
-			$('#nome').val(pizza.nome);
-			$('#preco').val(pizza.preco);
-			$('#categoria').val(pizza.categoria);
-			$('#ingredientes').val(pizza.ingredientes);
-			
-			$('#modal-pizza').modal('show');
-		});
+		$.get(url)
+			.success(function(pizza){
+				$('#id').val(pizza.id);
+				$('#nome').val(pizza.nome);
+				$('#preco').val(pizza.preco);
+				$('#categoria').val(pizza.categoria);
+				
+				pizza.ingredientes.forEach(function(ingrediente){
+					var id = ingrediente.id;
+					$('#ingredientes option[value='+id+']').attr('selected', true);
+				});
+				
+				$('#modal-pizza').modal('show');
+			});;
 	});
+	
 };
