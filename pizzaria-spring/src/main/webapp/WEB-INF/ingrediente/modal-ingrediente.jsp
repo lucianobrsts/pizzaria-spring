@@ -30,7 +30,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-					<button id="btn-salvar" type="button" class="btn btn-primary">SalvarInformações</button>
+					<button id="btn-salvar" type="button" class="btn btn-primary">Salvar Informações</button>
 				</div>
 			</form>
 		</div>
