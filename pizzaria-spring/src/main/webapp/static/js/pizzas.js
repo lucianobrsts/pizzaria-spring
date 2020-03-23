@@ -34,4 +34,19 @@ var aplicarListener = function() {
 			}
 		});
 	});
+	
+	$('.btn-editar').on('click', function() {
+		var pizzaId = $(this).parents('tr').data('id');
+		var url = 'pizzas/' + pizzaId;
+		
+		$.get(url).success(function(pizza) {
+			$('#id').val(pizza.id);
+			$('#nome').val(pizza.nome);
+			$('#preco').val(pizza.preco);
+			$('#categoria').val(pizza.categoria);
+			$('#ingredientes').val(pizza.ingredientes);
+			
+			$('#modal-pizza').modal('show');
+		});
+	});
 };
