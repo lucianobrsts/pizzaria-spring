@@ -65,7 +65,7 @@ public class PizzaController {
 			pizzaRepositorio.delete(pizzaId);
 			return new ResponseEntity<String>(HttpStatus.OK);
 
-		} catch (Exception e) {
+		} catch (Exception ex) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 	}
