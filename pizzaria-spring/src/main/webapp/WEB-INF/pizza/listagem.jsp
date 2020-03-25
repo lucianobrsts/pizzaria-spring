@@ -41,7 +41,7 @@
 		
 		<div>
 			<form action="${path}/sair" method="post">
-				<input type="hidden" name="_csrf" value="">
+				<input type="hidden" name="_csrf" value="${_csrf.token}">
 				<button type="submit">Sair da Aplicação</button>
 			</form>
 		</div>
