@@ -7,17 +7,17 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${titulo}</title>
-<c:set var="path" value="${pageContext.request.contextPath}"
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>${titulo}</title>
+	<c:set var="path" value="${pageContext.request.contextPath}"
 	scope="request" />
-<style type="text/css">
-@IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
-
-@IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
-</style>
-</head>
+	<style type="text/css">
+		@IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
+		
+		@IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
+	</style>
+	</head>
 <body>
 	<div class="container">
 		
@@ -38,6 +38,14 @@
 		</section>
 
 		<jsp:include page="modal-pizza.jsp" />
+		
+		<div>
+			<form action="${path}/sair" method="post">
+				<input type="hidden" name="_csrf" value="">
+				<button type="submit">Sair da Aplicação</button>
+			</form>
+		</div>
+		
 	</div>
 
 	<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>

@@ -14,24 +14,15 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("PIZZARIA");
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/app/pizzas/**", "app//ingredientes/**").hasRole("PIZZARIA")
-				.anyRequest().permitAll()
+				.antMatchers("/app/pizzas/**", "/app/ingredientes/**").hasRole("PIZZARIA")
+					.anyRequest().permitAll()
 		.and()
-			.formLogin()
-				.loginPage("/login.jsp")
-				.loginProcessingUrl("/autenticar")
-				.defaultSuccessUrl("/app/pizzas")
-				.failureUrl("/login.jsp?semacesso=true")
-				
-			.and()
-				.logout()
-					.logoutUrl("/sair")
-					.logoutSuccessUrl("/login.jsp?saiu=true");
+			.httpBasic();
 	}
 
 }
