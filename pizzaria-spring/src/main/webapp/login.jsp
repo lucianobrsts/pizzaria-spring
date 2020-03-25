@@ -16,6 +16,17 @@
 			@IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
 
 			@IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
+			
+			#login{
+				width: 400px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 100px;
+			}
+			
+			#btn-login{
+			width: 100%;
+			}
 		</style>
 	</head>
 	<body>
@@ -33,7 +44,7 @@
 					<input type="password" id="senha" name="senha" class="form-control">
 				</div>
 					
-				<div class="panel-foorter">
+				<div class="panel-footer">
 					<button id="btn-login" class="btn btn-primary">Entrar</button>
 				</div>
 				
