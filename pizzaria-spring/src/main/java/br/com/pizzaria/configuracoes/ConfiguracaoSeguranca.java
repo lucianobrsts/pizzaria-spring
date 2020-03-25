@@ -22,7 +22,17 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 				.antMatchers("/app/pizzas/**", "/app/ingredientes/**").hasRole("PIZZARIA")
 					.anyRequest().permitAll()
 		.and()
-			.httpBasic();
+			.formLogin()
+				.loginPage("/login.jsp")
+				.loginProcessingUrl("/autenticar")
+				.defaultSuccessUrl("/login.jsp?semacesso=true")
+				.usernameParameter("usuario")
+				.passwordParameter("senha")
+			
+			.and()
+				.logout()
+				.logoutUrl("/sair")
+				.logoutSuccessUrl("/login.jsp?saiu=true");
 	}
 
 }

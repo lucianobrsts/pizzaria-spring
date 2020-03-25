@@ -20,12 +20,12 @@
 	</head>
 	<body>
 		<section id="login" class="panel panel-primary">
-			<form action="${path}/authenticar" method="post">
+			<form action="${path}/autenticar" method="post">
 				<div class="panel-heading">
 					Pizzaria - Login
 				</div>
 			
-				<div>
+				<div class="panel-body">
 					<label for="usuario"></label>
 					<input id="usuario" name="usuario" class="form-control">
 					
