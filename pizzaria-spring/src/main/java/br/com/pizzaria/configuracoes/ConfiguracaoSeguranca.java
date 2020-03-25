@@ -1,28 +1,28 @@
 package br.com.pizzaria.configuracoes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import br.com.pizzaria.modelo.servicos.ServicoAutenticacao;
 
 @Configuration
 @EnableWebSecurity
 public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
-
+	
+	@Autowired private ServicoAutenticacao servicoAutenticacao;
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(new UserDetailsService() {
+		auth
+		.userDetailsService(servicoAutenticacao)
+		.passwordEncoder(encoder());
 			
-			@Override
-			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		});
 		
 		//auth.inMemoryAuthentication().withUser("admin").password("admin").roles("PIZZARIA");
 	}
@@ -46,6 +46,16 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 				.logout()
 				.logoutUrl("/sair")
 				.logoutSuccessUrl("/login.jsp?saiu=true");
+	}
+	
+	@Bean
+	public BCryptPasswordEncoder encoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	public static void main(String[] args) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		System.out.println(encoder.encode("admin"));
 	}
 
 }

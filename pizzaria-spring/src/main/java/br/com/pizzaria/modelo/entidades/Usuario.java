@@ -1,12 +1,23 @@
 package br.com.pizzaria.modelo.entidades;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class Usuario {
+public class Usuario implements UserDetails{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +26,9 @@ public class Usuario {
 	private String login;
 
 	private String senha;
+
+	@ManyToMany
+	private Set<Permissao> permissoes;
 
 	public Long getId() {
 		return id;
@@ -40,6 +54,14 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public Set<Permissao> getPermissoes() {
+		return permissoes;
+	}
+
+	public void setPermissoes(Set<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,6 +84,47 @@ public class Usuario {
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
+		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		java.util.List<GrantedAuthority> autorizacoes = new ArrayList<GrantedAuthority>();
+		
+		for (Permissao permissao : getPermissoes()) {
+			autorizacoes.add(new SimpleGrantedAuthority(permissao.getNome()));
+		}
+		
+		return autorizacoes;
+	}
+
+	@Override
+	public String getPassword() {
+		return senha;
+	}
+
+	@Override
+	public String getUsername() {
+		return login;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
 		return true;
 	}
 
