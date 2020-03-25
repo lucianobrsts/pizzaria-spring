@@ -20,6 +20,8 @@
 </head>
 <body>
 	<div class="container">
+	
+	<jsp:include page="../menu.jsp"></jsp:include>
 		
 		<c:if test="${not empty mensagemErro}">
 			<div>
@@ -33,7 +35,7 @@
 			</div>
 		</c:if>
 
-		<section class="container" id="secao-ingredientes">
+		<section id="secao-ingredientes">
 			<jsp:include page="tabela-ingredientes.jsp" />
 		</section>
 

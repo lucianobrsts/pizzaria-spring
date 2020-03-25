@@ -31,6 +31,19 @@
 	</head>
 	<body>
 		<section id="login" class="panel panel-primary">
+		
+			<c:if test='${not empty param["semacesso"]}'>
+				<div class="alert alert-warning">
+					Usuário e/ou senha incorretos!
+				</div>			
+			</c:if>
+			
+			<c:if test='${not empty param["saiu"]}'>
+				<div class="alert alert-info">
+					Você saiu do Sistema Pizzaria!
+				</div>			
+			</c:if>
+		
 			<form action="${path}/autenticar" method="post">
 				<div class="panel-heading">
 					Pizzaria - Login
@@ -38,10 +51,10 @@
 			
 				<div class="panel-body">
 					<label for="usuario"></label>
-					<input id="usuario" name="usuario" class="form-control">
+					<input id="usuario" name="usuario" class="form-control" required>
 					
 					<label for="senha"></label>
-					<input type="password" id="senha" name="senha" class="form-control">
+					<input type="password" id="senha" name="senha" class="form-control" required>
 				</div>
 					
 				<div class="panel-footer">

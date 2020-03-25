@@ -20,6 +20,9 @@
 	</head>
 <body>
 	<div class="container">
+	
+		<jsp:include page="../menu.jsp"></jsp:include>
+
 		
 		<c:if test="${not empty mensagemErro}">
 			<div>
@@ -33,17 +36,14 @@
 			</div>
 		</c:if>
 
-		<section class="container" id="secao-pizzas">
+		<section id="secao-pizzas">
 			<jsp:include page="tabela-pizzas.jsp" />
 		</section>
 
 		<jsp:include page="modal-pizza.jsp" />
 		
 		<div>
-			<form action="${path}/sair" method="post">
-				<input type="hidden" name="_csrf" value="${_csrf.token}">
-				<button type="submit">Sair da Aplicação</button>
-			</form>
+			
 		</div>
 		
 	</div>

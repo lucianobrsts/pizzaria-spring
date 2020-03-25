@@ -25,7 +25,8 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/login.jsp")
 				.loginProcessingUrl("/autenticar")
-				.defaultSuccessUrl("/login.jsp?semacesso=true")
+				.defaultSuccessUrl("/app/pizzas")
+				.failureUrl("/login.jsp?semacesso=true")
 				.usernameParameter("usuario")
 				.passwordParameter("senha")
 			
