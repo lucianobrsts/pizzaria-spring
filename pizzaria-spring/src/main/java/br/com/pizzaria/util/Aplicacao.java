@@ -29,7 +29,7 @@ public class Aplicacao implements WebApplicationInitializer {
 
 		FilterRegistration.Dynamic filter = servletContext.addFilter("OpenEntityManagerFilter",
 				buildOpenEntityManagerFilter());
-		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/app/*");
+		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/*");
 	}
 
 	private OpenEntityManagerInViewFilter buildOpenEntityManagerFilter() {
