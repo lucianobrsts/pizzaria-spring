@@ -31,21 +31,24 @@ var aplicarListenerBtnSalvar = function() {
 	});
 }
 
-var aplicarListener = function() {
+var aplicarListener = function(){
 	$('#modal-pizza').on('hide.bs.modal', limparModal);
-
-	$('.btn-deletar').on('click', function() {
+	
+	$('.btn-deletar').on('click', function(){
 		var pizzaId = $(this).parents('tr').data('id');
-
+		var csrf = $('#csrf').val();
+		
 		$.ajax({
-			url : 'pizzas/' + pizzaId,
-			type : 'DELETE',
-			success : function() {
-				$('tr[data-id="' + pizzaId + '"]').remove();
-				var pizzas = parseInt($('#quantidade-pizzas').text());
-				$('#quantidade-pizzas').text(pizzas - 1);
-			}
+			url : 'pizzas/'+pizzaId,
+			type: 'DELETE',
+			headers: {'X-CSRF-TOKEN': csrf},
+		    success: function() {
+		    	$('tr[data-id="'+pizzaId+'"]').remove();
+				var pizzas = parseInt( $('#quantidade-pizzas').text() );
+		    	$('#quantidade-pizzas').text(pizzas - 1);
+		    }
 		});
+		
 	});
 
 	$('.btn-editar').on('click', function(){

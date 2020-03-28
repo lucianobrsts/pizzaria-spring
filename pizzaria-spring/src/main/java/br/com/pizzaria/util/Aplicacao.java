@@ -27,7 +27,7 @@ public class Aplicacao implements WebApplicationInitializer {
 
 		servletContext.addListener(new ContextLoaderListener(webApplicationContext));
 
-		FilterRegistration.Dynamic filter = servletContext.addFilter("OpenEntityManagerFilter",
+		FilterRegistration.Dynamic filter = servletContext.addFilter("openEntityManagerFilter",
 				buildOpenEntityManagerFilter());
 		filter.addMappingForUrlPatterns(getDispatcherTypes(), false, "/*");
 	}
@@ -39,7 +39,6 @@ public class Aplicacao implements WebApplicationInitializer {
 	}
 
 	private EnumSet<DispatcherType> getDispatcherTypes() {
-
 		return EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ASYNC);
 	}
 
