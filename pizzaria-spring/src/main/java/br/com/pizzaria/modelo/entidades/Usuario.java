@@ -2,6 +2,7 @@ package br.com.pizzaria.modelo.entidades;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Usuario implements UserDetails{
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4532696719564855621L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,7 +90,7 @@ public class Usuario implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		java.util.List<GrantedAuthority> autorizacoes = new ArrayList<GrantedAuthority>();
+		List<GrantedAuthority> autorizacoes = new ArrayList<GrantedAuthority>();
 		
 		for (Permissao permissao : getPermissoes()) {
 			autorizacoes.add(new SimpleGrantedAuthority(permissao.getNome()));
