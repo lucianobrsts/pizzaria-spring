@@ -40,8 +40,8 @@
 				</c:forEach>
 				</td>
 				
-				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar"><spring:message code="views.menu.editar"/></button></td>
-				<td style="text-align: center;"><button type="button" class="btn btn-danger btn-deletar"><spring:message code="views.menu.deletar"/></button></td>
+				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar"><spring:message code="views.pizzas.tabela.coluna.editar"/></button></td>
+				<td style="text-align: center;"><button type="button" class="btn btn-danger btn-deletar"><spring:message code="views.pizzas.tabela.coluna.deletar"/></button></td>
 			</tr>
 		</c:forEach>
 

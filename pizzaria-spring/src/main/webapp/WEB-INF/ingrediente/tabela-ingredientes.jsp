@@ -37,7 +37,7 @@
 		<tr>
 			<td colspan="5">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#modal-ingrediente"><spring:message code="views.ingredientes.tabela.botaoCadastrar.cadastrar.cadastrar"/></button>
+					data-target="#modal-ingrediente"><spring:message code="views.ingredientes.tabela.botaoCadastrar.cadastrar"/></button>
 			</td>
 		</tr>
 	</tfoot>
