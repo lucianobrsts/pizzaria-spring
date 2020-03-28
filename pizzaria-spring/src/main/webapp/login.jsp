@@ -34,7 +34,7 @@
 		<section id="login" class="panel panel-primary">
 		
 			<c:if test='${not empty param["semacesso"]}'>
-				<div class="alert alert-warning">
+				<div class="alert alert-danger">
 					Usuário e/ou senha incorretos!
 				</div>			
 			</c:if>
