@@ -11,14 +11,14 @@
 	<thead>
 		<tr>
 			<th style="width: 10%; text-align: center">#</th>
-			<th style="width: 45%; text-align: center">Nome</th>
-			<th style="width: 30%; text-align: center">Categoria</th>
-			<th style="width: 8%; text-align: center">Editar</th>
-			<th style="width: 8%; text-align: center">Deletar</th>
+			<th style="width: 45%; text-align: center"><spring:message code="views.ingredientes.tabela.coluna.nome"/></th>
+			<th style="width: 30%; text-align: center"><spring:message code="views.ingredientes.tabela.coluna.categoria"/></th>
+			<th style="width: 8%; text-align: center"><spring:message code="views.ingredientes.tabela.coluna.editar"/></th>
+			<th style="width: 8%; text-align: center"><spring:message code="views.ingredientes.tabela.coluna.deletar"/></th>
 		</tr>
 	</thead>
 	<tbody>
-
+	
 		<c:forEach items="${ingredientes}" var="ingrediente">
 			<tr data-id="${ingrediente.id}">
 				<td style="text-align: center;">${ingrediente.id}</td>
@@ -37,7 +37,7 @@
 		<tr>
 			<td colspan="5">
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#modal-ingrediente">Cadastrar Ingredientes</button>
+					data-target="#modal-ingrediente"><spring:message code="views.ingredientes.tabela.botaoCadastrar.cadastrar.cadastrar"/></button>
 			</td>
 		</tr>
 	</tfoot>

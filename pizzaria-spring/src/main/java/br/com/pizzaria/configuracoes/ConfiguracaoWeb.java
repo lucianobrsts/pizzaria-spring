@@ -33,26 +33,25 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		LocaleChangeInterceptor localeIntercptor = new LocaleChangeInterceptor();
-		localeIntercptor.setParamName("lang");
-
-		registry.addInterceptor(localeIntercptor);
+		LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+		localeInterceptor.setParamName("lang");
+		
+		registry.addInterceptor(localeInterceptor);
 	}
 
 	@Bean
-	public LocaleResolver sessionLocaleResolver() {
+	public LocaleResolver localeResolver(){
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
 		resolver.setDefaultLocale(new Locale("pt_BR"));
 		return resolver;
 	}
 
 	@Bean
-	public MessageSource messageSource() {
+	public MessageSource messageSource(){
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 		messageSource.setBasename("classpath:/I18n/messages");
 		messageSource.setDefaultEncoding("UTF-8");
-		
-		return messageSource();
+		return messageSource;
 	}
 
 }

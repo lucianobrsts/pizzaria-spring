@@ -12,12 +12,12 @@
 	<thead>
 		<tr>
 			<th style="width: 10%; text-align: center">#</th>
-			<th style="width: 30%; text-align: center">Nome</th>
-			<th style="width: 20%; text-align: center">Preço</th>
-			<th style="width: 10%; text-align: center">Categoria</th>
-			<th style="width: 10%; text-align: center">Ingredientes</th>
-			<th style="width: 10%; text-align: center">Editar</th>
-			<th style="width: 10%; text-align: center">Deletar</th>
+			<th style="width: 30%; text-align: center"><spring:message code="views.pizzas.tabela.coluna.nome"/></th>
+			<th style="width: 20%; text-align: center"><spring:message code="views.pizzas.tabela.coluna.preco"/></th>
+			<th style="width: 10%; text-align: center"><spring:message code="views.pizzas.tabela.coluna.categoria"/></th>
+			<th style="width: 10%; text-align: center"><spring:message code="views.pizzas.tabela.coluna.ingredientes"/></th>
+			<th style="width: 10%; text-align: center"><spring:message code="views.pizzas.tabela.coluna.editar"/></th>
+			<th style="width: 10%; text-align: center"><spring:message code="views.pizzas.tabela.coluna.deletar"/></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -40,8 +40,8 @@
 				</c:forEach>
 				</td>
 				
-				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar">Editar</button></td>
-				<td style="text-align: center;"><button type="button" class="btn btn-danger btn-deletar">Deletar</button></td>
+				<td style="text-align: center;"><button type="button" class="btn btn-warning btn-editar"><spring:message code="views.menu.editar"/></button></td>
+				<td style="text-align: center;"><button type="button" class="btn btn-danger btn-deletar"><spring:message code="views.menu.deletar"/></button></td>
 			</tr>
 		</c:forEach>
 
@@ -52,7 +52,7 @@
 		</tr>
 		<tr>
 			<td colspan="7">
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-pizza">Cadastrar Pizzas</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-pizza"><spring:message code="views.pizzas.tabela.botaoCadastrar.cadastrar"/></button>
 			</td>
 		</tr>
 	</tfoot>
