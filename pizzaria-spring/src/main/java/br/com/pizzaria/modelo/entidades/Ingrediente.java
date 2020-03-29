@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,10 +24,14 @@ public class Ingrediente {
 	@NotNull
 	@NotEmpty
 	private String nome;
-	
+
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private CategoriaIngredientes categoria;
+
+	@ManyToOne
+	@JoinColumn(name = "DONO")
+	private Pizzaria dono;
 
 	public Long getId() {
 		return id;
@@ -49,6 +55,14 @@ public class Ingrediente {
 
 	public void setCategoria(CategoriaIngredientes categoria) {
 		this.categoria = categoria;
+	}
+
+	public Pizzaria getDono() {
+		return dono;
+	}
+
+	public void setDono(Pizzaria dono) {
+		this.dono = dono;
 	}
 
 	@Override
@@ -78,5 +92,5 @@ public class Ingrediente {
 			return false;
 		return true;
 	}
-	
+
 }
