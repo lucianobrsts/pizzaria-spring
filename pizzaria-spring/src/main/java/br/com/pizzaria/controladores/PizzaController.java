@@ -54,7 +54,7 @@ public class PizzaController {
 			servicoPizza.salvar(pizza);
 		}
 
-		model.addAttribute("pizzas", servicoIngrediente.listar());
+		model.addAttribute("pizzas", servicoPizza.listar());
 		return "pizza/tabela-pizzas";
 	}
 
