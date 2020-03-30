@@ -8,23 +8,32 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>Qual pizza hoje?</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<c:set var="path" value="${pageContext.request.contextPath}" scope="request" />
+		<style type="text/css">
+			@IMPORT url("${path}/static/bootstrap/css/bootstrap.min.css");
+			
+			@IMPORT url("${path}/static/bootstrap/css/bootstrap-theme.min.css");
+		</style>
 	</head>
 	
 	<body>
-		<jsp:include page="../menu-cliente.jsp"></jsp:include>
-		
-		<section>
-			<div id="consulta-pizzaria">
-				<label for="pizza_pesquisa">Que pizza você quer comer hoje?</label>
-				<select class="form-control">
-					<c:forEach items="${nomesPizzas}" var="nomePizza">
-						<option value="${nomePizza}">${nomePizza}</option>
-					</c:forEach>
-				</select>
-			</div>
+		<div class="container">
+			<jsp:include page="../menu-cliente.jsp"></jsp:include>
 			
-			<div id="secao-pizzaria"></div>
-		</section>
+			<section>
+				<div id="consulta-pizzaria">
+					<label for="pizza_pesquisa">Que pizza você quer comer hoje?</label>
+					<select class="form-control">
+						<c:forEach items="${nomesPizzas}" var="nomePizza">
+							<option value="${nomePizza}">${nomePizza}</option>
+						</c:forEach>
+					</select>
+				</div>
+				
+				<div id="secao-pizzaria"></div>
+			</section>
+		</div>
 	</body>
 </html>
