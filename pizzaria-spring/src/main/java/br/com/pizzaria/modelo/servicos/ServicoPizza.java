@@ -1,6 +1,10 @@
 package br.com.pizzaria.modelo.servicos;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.pizzaria.modelo.entidades.Pizza;
@@ -36,6 +40,16 @@ public class ServicoPizza {
 		if (pizza != null) {
 			repositorio.delete(pizza);
 		}
+	}
+
+	public List<String> listarNomesPizzasDisponiveis() {
+		List<Pizza> pizzas = repositorio.findAll();
+
+		List<String> nomesPizzas = pizzas.stream().map((pizza) -> {
+			return pizza.getNome();
+		}).sorted().collect(Collectors.toList());
+
+		return nomesPizzas;
 	}
 
 }
