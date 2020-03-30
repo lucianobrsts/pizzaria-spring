@@ -10,14 +10,20 @@
 	class="table table-hover table-condensed table-striped table-bordered">
 	<thead>
 		<tr>
-			<th style="width: 10%; text-align: center">#</th>
+			<th style="width: 30%; text-align: center">Nome</th>
+			<th style="width: 40%; text-align: center">Endereço</th>
+			<th style="width: 20%; text-align: center">Atendendo desde</th>
+			<th style="width: 10%; text-align: center">Entre em Contato</th>
 		</tr>
 	</thead>
 	<tbody>
 
 		<c:forEach items="${pizzarias}" var="pizzaria">
 			<tr data-id="${pizzaria.id}">
-				<td style="text-align: center;">${pizza.id}</td>
+				<td style="text-align: center;">${pizzaria.nome}</td>
+				<td style="text-align: center;">${pizzaria.endereco}</td>
+				<td style="text-align: center;"><fmt:formatDate value="${pizzaria.dataCadastro.time}" pattern="dd/MM/yyyy" /></td>
+				<td style="text-align: center;"><a href="#">Contato</a></td>
 			</tr>
 		</c:forEach>
 

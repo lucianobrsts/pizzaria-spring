@@ -1,6 +1,6 @@
 var buscar = function() {
 	var nomePizza = $('#pizza_pesquisa').val();
-	var url = '/app/pizzaria/pizza/' + nomePizza;
+	var url = 'pizzaria/pizza/' + nomePizza;
 
 	$.get(url).success(function(view) {
 		$('#secao-pizzarias').html(view)
