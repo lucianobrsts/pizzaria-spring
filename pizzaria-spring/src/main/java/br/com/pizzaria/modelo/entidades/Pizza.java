@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.com.pizzaria.modelo.enums.CategoriaPizza;
+import br.com.pizzaria.modelo.enums.CategoriaDePizza;
 
 @Entity
 public class Pizza {
@@ -35,7 +35,7 @@ public class Pizza {
 
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private CategoriaPizza categoria;
+	private CategoriaDePizza categoria;
 
 	@ManyToMany
 	private Set<Ingrediente> ingredientes;
@@ -69,11 +69,11 @@ public class Pizza {
 		this.preco = preco;
 	}
 
-	public CategoriaPizza getCategoria() {
+	public CategoriaDePizza getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(CategoriaPizza categoria) {
+	public void setCategoria(CategoriaDePizza categoria) {
 		this.categoria = categoria;
 	}
 

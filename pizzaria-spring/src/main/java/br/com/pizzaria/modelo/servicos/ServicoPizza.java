@@ -15,7 +15,6 @@ public class ServicoPizza {
 
 	@Autowired
 	private ServicoPizzaria servicoPizzaria;
-
 	@Autowired
 	private PizzaRepositorio repositorio;
 
@@ -36,9 +35,8 @@ public class ServicoPizza {
 
 	public void remover(long id) {
 		Pizza pizza = this.buscar(id);
-		if (pizza != null) {
+		if (pizza != null)
 			repositorio.delete(pizza);
-		}
 	}
 
 	public List<String> listarNomesPizzasDisponiveis() {

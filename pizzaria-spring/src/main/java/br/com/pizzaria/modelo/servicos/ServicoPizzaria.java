@@ -20,16 +20,14 @@ public class ServicoPizzaria {
 
 	public Pizzaria getPizzariaLogada() {
 		Authentication autenticado = SecurityContextHolder.getContext().getAuthentication();
-
-		if (autenticado == null) {
-			throw new AuthenticationCredentialsNotFoundException("Usuário não logado");
-		}
+		if (autenticado == null)
+			throw new AuthenticationCredentialsNotFoundException("Usuario nao logado");
 
 		UserDetails usuarioLogado = (UserDetails) autenticado.getPrincipal();
 		return pizzariaRepositorio.findOneByLogin(usuarioLogado.getUsername());
 	}
 
-	public List<Pizzaria> listarPizzariasContemPizza(String nomePizza) {
+	public List<Pizzaria> listarPizzariasQueContem(String nomePizza) {
 		return pizzariaRepositorio.listarPizzariasPorNomePizza(nomePizza);
 	}
 

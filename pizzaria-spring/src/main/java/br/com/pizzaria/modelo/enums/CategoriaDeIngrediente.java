@@ -1,6 +1,6 @@
 package br.com.pizzaria.modelo.enums;
 
-public enum CategoriaIngredientes {
+public enum CategoriaDeIngrediente {
 
 	FRIOS, SALADA, CARNE, CONDIMENTO, TEMPERO
 

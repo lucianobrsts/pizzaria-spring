@@ -21,9 +21,9 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "br.com.pizzaria")
+@ComponentScan(basePackages="br.com.leosilvadev.pizzaria")
 public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
-
+	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
@@ -32,30 +32,30 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 		viewResolver.setViewClass(JstlView.class);
 		registry.viewResolver(viewResolver);
 	}
-
+	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
 		localeInterceptor.setParamName("lang");
-
+		
 		registry.addInterceptor(localeInterceptor);
 	}
-
+	
 	@Bean
-	public LocaleResolver localeResolver() {
+	public LocaleResolver localeResolver(){
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
-		resolver.setDefaultLocale(new Locale("pt_BR"));
+		resolver.setDefaultLocale(new Locale("en_US"));
 		return resolver;
 	}
-
+	
 	@Bean
-	public MessageSource messageSource() {
+	public MessageSource messageSource(){
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 		messageSource.setBasename("classpath:/I18n/messages");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}
-
+	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/").setViewName("cliente/index");
@@ -64,7 +64,7 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
 	}
 
 }

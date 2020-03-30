@@ -12,7 +12,6 @@ public class ServicoIngrediente {
 
 	@Autowired
 	private ServicoPizzaria servicoPizzaria;
-
 	@Autowired
 	private IngredienteRepositorio repositorio;
 
@@ -33,9 +32,8 @@ public class ServicoIngrediente {
 
 	public void remover(long id) {
 		Ingrediente ingrediente = this.buscar(id);
-		if (ingrediente != null) {
+		if (ingrediente != null)
 			repositorio.delete(ingrediente);
-		}
 	}
 
 }

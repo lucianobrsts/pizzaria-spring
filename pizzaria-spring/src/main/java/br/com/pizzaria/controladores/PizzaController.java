@@ -18,8 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.pizzaria.excecoes.IngredienteInvalidoException;
 import br.com.pizzaria.modelo.entidades.Ingrediente;
 import br.com.pizzaria.modelo.entidades.Pizza;
-import br.com.pizzaria.modelo.enums.CategoriaIngredientes;
-import br.com.pizzaria.modelo.enums.CategoriaPizza;
+import br.com.pizzaria.modelo.enums.CategoriaDePizza;
 import br.com.pizzaria.modelo.servicos.ServicoIngrediente;
 import br.com.pizzaria.modelo.servicos.ServicoPizza;
 import br.com.pizzaria.porpertyeditors.IngredientePropertyEditor;
@@ -30,7 +29,6 @@ public class PizzaController {
 
 	@Autowired
 	private IngredientePropertyEditor ingredientePropertyEditor;
-
 	@Autowired
 	private ServicoPizza servicoPizza;
 	@Autowired
@@ -39,8 +37,7 @@ public class PizzaController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String listarPizzas(Model model) {
 		model.addAttribute("pizzas", servicoPizza.listar());
-		model.addAttribute("categorias", CategoriaPizza.values());
-		model.addAttribute("ingredientes", CategoriaIngredientes.values());
+		model.addAttribute("categorias", CategoriaDePizza.values());
 		model.addAttribute("ingredientes", servicoIngrediente.listar());
 		return "pizza/listagem";
 	}
@@ -50,8 +47,10 @@ public class PizzaController {
 
 		if (bindingResult.hasErrors()) {
 			throw new IngredienteInvalidoException();
+
 		} else {
 			servicoPizza.salvar(pizza);
+
 		}
 
 		model.addAttribute("pizzas", servicoPizza.listar());
@@ -66,7 +65,9 @@ public class PizzaController {
 
 		} catch (Exception ex) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+
 		}
+
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{pizzaId}")
@@ -79,4 +80,5 @@ public class PizzaController {
 	public void initBinder(WebDataBinder webDataBinder) {
 		webDataBinder.registerCustomEditor(Ingrediente.class, ingredientePropertyEditor);
 	}
+
 }

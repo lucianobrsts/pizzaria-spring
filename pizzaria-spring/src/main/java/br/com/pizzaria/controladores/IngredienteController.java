@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.pizzaria.excecoes.IngredienteInvalidoException;
 import br.com.pizzaria.modelo.entidades.Ingrediente;
-import br.com.pizzaria.modelo.enums.CategoriaIngredientes;
+import br.com.pizzaria.modelo.enums.CategoriaDeIngrediente;
 import br.com.pizzaria.modelo.servicos.ServicoIngrediente;
 
 @Controller
@@ -32,7 +32,7 @@ public class IngredienteController {
 
 		model.addAttribute("titulo", "Listagem de Ingredientes");
 		model.addAttribute("ingredientes", ingredientes);
-		model.addAttribute("categorias", CategoriaIngredientes.values());
+		model.addAttribute("categorias", CategoriaDeIngrediente.values());
 
 		return "ingrediente/listagem";
 	}
@@ -48,7 +48,7 @@ public class IngredienteController {
 		}
 
 		model.addAttribute("ingredientes", servicoIngrediente.listar());
-		model.addAttribute("categorias", CategoriaIngredientes.values());
+		model.addAttribute("categorias", CategoriaDeIngrediente.values());
 		return "ingrediente/tabela-ingredientes";
 	}
 

@@ -14,25 +14,23 @@ import br.com.pizzaria.modelo.servicos.ServicoAutenticacao;
 @Configuration
 @EnableWebSecurity
 public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired private ServicoAutenticacao servicoAutenticacao;
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
-		.userDetailsService(servicoAutenticacao)
-		.passwordEncoder(encoder());
-			
-		
-		//auth.inMemoryAuthentication().withUser("admin").password("admin").roles("PIZZARIA");
+			.userDetailsService(servicoAutenticacao)
+			.passwordEncoder(encoder());
+//		auth.inMemoryAuthentication().withUser("admin").password("admin").roles("PIZZARIA");
 	}
-
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/app/pizzas/**", "/ingredientes/**").hasRole("PIZZARIA")
-					.anyRequest().permitAll()
+				.antMatchers("/pizzas/**", "/ingredientes/**").hasRole("PIZZARIA")
+				.anyRequest().permitAll()
 		.and()
 			.formLogin()
 				.loginPage("/login")
@@ -41,15 +39,15 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 				.failureUrl("/login?semacesso=true")
 				.usernameParameter("usuario")
 				.passwordParameter("senha")
-			
+				
 			.and()
 				.logout()
-				.logoutUrl("/sair")
-				.logoutSuccessUrl("/login?saiu=true");
+					.logoutUrl("/sair")
+					.logoutSuccessUrl("/login?saiu=true");
 	}
 	
 	@Bean
-	public BCryptPasswordEncoder encoder() {
+	public BCryptPasswordEncoder encoder(){
 		return new BCryptPasswordEncoder();
 	}
 	
