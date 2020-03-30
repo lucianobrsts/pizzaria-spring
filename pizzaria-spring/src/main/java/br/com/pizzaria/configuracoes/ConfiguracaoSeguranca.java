@@ -31,21 +31,21 @@ public class ConfiguracaoSeguranca extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/app/pizzas/**", "/app/ingredientes/**").hasRole("PIZZARIA")
+				.antMatchers("/app/pizzas/**", "/ingredientes/**").hasRole("PIZZARIA")
 					.anyRequest().permitAll()
 		.and()
 			.formLogin()
-				.loginPage("/login.jsp")
+				.loginPage("/login")
 				.loginProcessingUrl("/autenticar")
-				.defaultSuccessUrl("/app/pizzas")
-				.failureUrl("/login.jsp?semacesso=true")
+				.defaultSuccessUrl("/pizzas")
+				.failureUrl("/login?semacesso=true")
 				.usernameParameter("usuario")
 				.passwordParameter("senha")
 			
 			.and()
 				.logout()
 				.logoutUrl("/sair")
-				.logoutSuccessUrl("/login.jsp?saiu=true");
+				.logoutSuccessUrl("/login?saiu=true");
 	}
 	
 	@Bean
