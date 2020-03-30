@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -24,7 +25,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Pizzaria implements UserDetails {
 
-	private static final long serialVersionUID = 4532696719564855621L;
+	private static final long serialVersionUID = 96265543598833115L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,13 +47,16 @@ public class Pizzaria implements UserDetails {
 	private String endereco;
 
 	@ElementCollection
-	private Set<String> email;
+	private Set<String> emails;
 
 	@ElementCollection
-	private Set<String> telefone;
+	private Set<String> telefones;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Set<Permissao> permissoes;
+
+	@OneToMany(mappedBy = "dono")
+	private Set<Pizza> pizzas;
 
 	public Long getId() {
 		return id;
@@ -62,12 +66,12 @@ public class Pizzaria implements UserDetails {
 		this.id = id;
 	}
 
-	public String getLogin() {
-		return usuario.getLogin();
+	public Set<Permissao> getPermissoes() {
+		return permissoes;
 	}
 
-	public String getSenha() {
-		return usuario.getSenha();
+	public void setPermissoes(Set<Permissao> permissoes) {
+		this.permissoes = permissoes;
 	}
 
 	public Calendar getDataCadastro() {
@@ -94,28 +98,32 @@ public class Pizzaria implements UserDetails {
 		this.endereco = endereco;
 	}
 
-	public Set<String> getEmail() {
-		return email;
+	public Set<String> getEmails() {
+		return emails;
 	}
 
-	public void setEmail(Set<String> email) {
-		this.email = email;
+	public void setEmails(Set<String> emails) {
+		this.emails = emails;
 	}
 
-	public Set<String> getTelefone() {
-		return telefone;
+	public Set<String> getTelefones() {
+		return telefones;
 	}
 
-	public void setTelefone(Set<String> telefone) {
-		this.telefone = telefone;
+	public void setTelefones(Set<String> telefones) {
+		this.telefones = telefones;
 	}
 
-	public Set<Permissao> getPermissoes() {
-		return permissoes;
-	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> autorizacoes = new ArrayList<GrantedAuthority>();
 
-	public void setPermissoes(Set<Permissao> permissoes) {
-		this.permissoes = permissoes;
+		for (Permissao permissao : getPermissoes()) {
+			autorizacoes.add(new SimpleGrantedAuthority(permissao.getNome()));
+
+		}
+
+		return autorizacoes;
 	}
 
 	@Override
@@ -148,6 +156,22 @@ public class Pizzaria implements UserDetails {
 		return true;
 	}
 
+	public Set<Pizza> getPizzas() {
+		return pizzas;
+	}
+
+	public void setPizzas(Set<Pizza> pizzas) {
+		this.pizzas = pizzas;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -166,22 +190,11 @@ public class Pizzaria implements UserDetails {
 			return false;
 		Pizzaria other = (Pizzaria) obj;
 		if (usuario.getLogin() == null) {
-			if (other.usuario.getLogin() != null)
+			if (other.getUsuario().getLogin() != null)
 				return false;
-		} else if (!usuario.getLogin().equals(other.usuario.getLogin()))
+		} else if (!usuario.getLogin().equals(other.getUsuario().getLogin()))
 			return false;
 		return true;
-	}
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> autorizacoes = new ArrayList<GrantedAuthority>();
-
-		for (Permissao permissao : getPermissoes()) {
-			autorizacoes.add(new SimpleGrantedAuthority(permissao.getNome()));
-		}
-
-		return autorizacoes;
 	}
 
 }

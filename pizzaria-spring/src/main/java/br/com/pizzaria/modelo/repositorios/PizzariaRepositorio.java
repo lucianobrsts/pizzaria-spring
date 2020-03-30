@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.com.pizzaria.modelo.entidades.Pizzaria;
 
 @Repository
-public interface PizzariaRepositorio extends CrudRepository<Pizzaria, Long>{
+public interface PizzariaRepositorio extends CrudRepository<Pizzaria, Long> {
 
 	@Query("SELECT p FROM Pizzaria p WHERE p.usuario.login = ?")
 	public Pizzaria findOneByLogin(String login);
