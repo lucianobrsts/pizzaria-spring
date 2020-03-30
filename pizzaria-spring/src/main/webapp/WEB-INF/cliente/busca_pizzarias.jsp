@@ -30,7 +30,7 @@
 				<div id="consulta-pizzaria" class="well">
 				<div class="col-sm-4">
 					<label for="pizza_pesquisa">Que pizza você quer comer hoje?</label>
-					<select class="form-control">
+					<select id="pizza_pesquisa" class="form-control">
 						<c:forEach items="${nomesPizzas}" var="nomePizza">
 							<option value="${nomePizza}">${nomePizza}</option>
 						</c:forEach>
@@ -44,5 +44,8 @@
 				<div id="secao-pizzaria"></div>
 			</section>
 		</div>
+		<script type="text/javascript" src="${path}/static/js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="${path}/static/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${path}/static/js/pizzarias.js"></script>
 	</body>
 </html>

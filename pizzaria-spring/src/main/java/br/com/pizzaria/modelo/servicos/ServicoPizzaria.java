@@ -1,5 +1,7 @@
 package br.com.pizzaria.modelo.servicos;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,10 @@ public class ServicoPizzaria {
 
 		UserDetails usuarioLogado = (UserDetails) autenticado.getPrincipal();
 		return pizzariaRepositorio.findOneByLogin(usuarioLogado.getUsername());
+	}
+
+	public List<Pizzaria> listarPizzariasContemPizza(String nomePizza) {
+		return pizzariaRepositorio.listarPizzariasPorNomePizza(nomePizza);
 	}
 
 }
